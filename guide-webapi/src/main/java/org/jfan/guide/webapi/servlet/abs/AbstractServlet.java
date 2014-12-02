@@ -15,7 +15,7 @@ import org.jfan.an.surfing.Surfing;
 import org.jfan.an.surfing.SurfingSource;
 import org.jfan.guide.service.LayoutService;
 import org.jfan.guide.service.impl.LayoutServiceImpl;
-import org.jfan.guide.surfing.LayoutSurfingSourceAll;
+import org.jfan.guide.surfing.LayoutSurfingSource;
 import org.jfan.guide.vo.LayoutVO;
 import org.jfan.weapon.probability.random.RandomUtil;
 
@@ -53,8 +53,8 @@ public abstract class AbstractServlet extends HttpServlet {
 	}
 
 	public SurfingSource<LayoutVO> getSurfingSource(String name) {
-//		return new LayoutSurfingSource(name);
-		return new LayoutSurfingSourceAll(name);
+		return new LayoutSurfingSource(name);
+//		return new LayoutSurfingSourceAll(name);
 //		return new LayoutSurfingSourceAllRefresher(name);
 	}
 

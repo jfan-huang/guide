@@ -44,7 +44,7 @@ public class MemcachedServlet extends AbstractServlet {
 
 		SurfingSource<LayoutVO> source = getSurfingSource("Memcached");
 
-		return SurfingFactory.newCachedLoadOnly(source, cacheService, 15);
+		return SurfingFactory.newCachedLoadOnlyGroup(source, cacheService, 15);
 	}
 
 	private MemcachedClient mc() throws IOException {
