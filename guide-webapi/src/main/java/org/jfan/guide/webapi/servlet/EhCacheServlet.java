@@ -8,7 +8,7 @@ import org.jfan.an.cache.ehcache.EhCacheServiceImpl;
 import org.jfan.an.surfing.Surfing;
 import org.jfan.an.surfing.SurfingFactory;
 import org.jfan.an.surfing.SurfingSource;
-import org.jfan.guide.service.vo.LayoutVO;
+import org.jfan.guide.vo.LayoutVO;
 import org.jfan.guide.webapi.servlet.abs.AbstractServlet;
 
 /**
@@ -21,17 +21,14 @@ public class EhCacheServlet extends AbstractServlet {
 
 	private static final long serialVersionUID = -549295062477499831L;
 
-	/*
-	 * （非 Javadoc）
-	 * 
-	 * @see org.guide.webapi.servlet.abs.AbstractServlet#getSentence()
+	/**
+	 * {@inheritDoc} <br>
 	 */
 	@Override
 	public Surfing<LayoutVO> getSentence() {
 		BaseCacheService cacheService = new EhCacheServiceImpl();
-		SurfingSource<LayoutVO> source = getSurfingSource();
-		int expSeconds = 30;
-		return SurfingFactory.newCached(source, cacheService, expSeconds);
+		SurfingSource<LayoutVO> source = getSurfingSource("EhCache");
+		return SurfingFactory.newCachedLoadOnly(source, cacheService, 15);
 	}
 
 }

@@ -14,7 +14,7 @@ import org.jfan.an.cache.memcached.MemcachedServiceImpl;
 import org.jfan.an.surfing.Surfing;
 import org.jfan.an.surfing.SurfingFactory;
 import org.jfan.an.surfing.SurfingSource;
-import org.jfan.guide.service.vo.LayoutVO;
+import org.jfan.guide.vo.LayoutVO;
 import org.jfan.guide.webapi.servlet.abs.AbstractServlet;
 
 /**
@@ -27,10 +27,8 @@ public class MemcachedServlet extends AbstractServlet {
 
 	private static final long serialVersionUID = -549295062477499831L;
 
-	/*
-	 * （非 Javadoc）
-	 * 
-	 * @see org.guide.webapi.servlet.abs.AbstractServlet#getSentence()
+	/**
+	 * {@inheritDoc} <br>
 	 */
 	@Override
 	public Surfing<LayoutVO> getSentence() {
@@ -44,9 +42,9 @@ public class MemcachedServlet extends AbstractServlet {
 		MemcachedServiceImpl cacheService = new MemcachedServiceImpl();
 		cacheService.setMemcachedClient(mc);
 
-		SurfingSource<LayoutVO> source = getSurfingSource();
+		SurfingSource<LayoutVO> source = getSurfingSource("Memcached");
 
-		return SurfingFactory.newCached(source, cacheService, 30);
+		return SurfingFactory.newCachedLoadOnly(source, cacheService, 15);
 	}
 
 	private MemcachedClient mc() throws IOException {

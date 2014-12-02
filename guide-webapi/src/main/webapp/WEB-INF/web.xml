@@ -7,22 +7,22 @@
 
 	<servlet>
 		<servlet-name>pp</servlet-name>
-		<servlet-class>org.guide.webapi.servlet.print.PrintParamsServlet</servlet-class>
+		<servlet-class>org.jfan.guide.webapi.servlet.print.PrintParamsServlet</servlet-class>
 	</servlet>
 
 	<servlet>
 		<servlet-name>member</servlet-name>
-		<servlet-class>org.guide.webapi.servlet.MemberServlet</servlet-class>
+		<servlet-class>org.jfan.guide.webapi.servlet.MemberServlet</servlet-class>
 	</servlet>
 
 	<servlet>
 		<servlet-name>ehcache</servlet-name>
-		<servlet-class>org.guide.webapi.servlet.EhCacheServlet</servlet-class>
+		<servlet-class>org.jfan.guide.webapi.servlet.EhCacheServlet</servlet-class>
 	</servlet>
 
 	<servlet>
 		<servlet-name>memcached</servlet-name>
-		<servlet-class>org.guide.webapi.servlet.MemcachedServlet</servlet-class>
+		<servlet-class>org.jfan.guide.webapi.servlet.MemcachedServlet</servlet-class>
 	</servlet>
 
 	<!-- mapping -->

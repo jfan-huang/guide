@@ -1,4 +1,4 @@
-package org.jfan.guide.service.vo;
+package org.jfan.guide.vo;
 
 import java.io.Serializable;
 

@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jfan.an.surfing.Surfing;
 import org.jfan.an.surfing.SurfingSource;
+import org.jfan.guide.service.LayoutService;
 import org.jfan.guide.service.impl.LayoutServiceImpl;
-import org.jfan.guide.service.service.LayoutService;
-import org.jfan.guide.service.vo.LayoutVO;
+import org.jfan.guide.surfing.LayoutSurfingSourceAll;
+import org.jfan.guide.vo.LayoutVO;
 import org.jfan.weapon.probability.random.RandomUtil;
 
 /**
@@ -51,19 +52,10 @@ public abstract class AbstractServlet extends HttpServlet {
 		initial();
 	}
 
-	public SurfingSource<LayoutVO> getSurfingSource() {
-		return new SurfingSource<LayoutVO>() {
-
-			@Override
-			public LayoutVO toSource(Object... args) {
-				return new LayoutVO((String) args[0]);
-			}
-
-			@Override
-			public String toKey(Object... args) {
-				return (String) args[0];
-			}
-		};
+	public SurfingSource<LayoutVO> getSurfingSource(String name) {
+//		return new LayoutSurfingSource(name);
+		return new LayoutSurfingSourceAll(name);
+//		return new LayoutSurfingSourceAllRefresher(name);
 	}
 
 	/**
@@ -80,9 +72,7 @@ public abstract class AbstractServlet extends HttpServlet {
 	/*
 	 * （非 Javadoc）
 	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#service(javax.servlet.http.HttpServletRequest
-	 * , javax.servlet.http.HttpServletResponse)
+	 * @see javax.servlet.http.HttpServlet#service(javax.servlet.http.HttpServletRequest , javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

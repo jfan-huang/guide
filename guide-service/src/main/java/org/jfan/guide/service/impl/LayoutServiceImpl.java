@@ -1,17 +1,15 @@
 package org.jfan.guide.service.impl;
 
 import org.jfan.an.surfing.Surfing;
-import org.jfan.guide.service.service.LayoutService;
-import org.jfan.guide.service.vo.LayoutVO;
+import org.jfan.guide.service.LayoutService;
+import org.jfan.guide.vo.LayoutVO;
 
 public class LayoutServiceImpl implements LayoutService {
 
 	private Surfing<LayoutVO> svos;
 
-	/*
-	 * （非 Javadoc）
-	 * 
-	 * @see org.guide.service.service.LayoutService#getLayout(java.lang.String)
+	/**
+	 * {@inheritDoc} <br>
 	 */
 	@Override
 	public LayoutVO getLayout(String string) {
