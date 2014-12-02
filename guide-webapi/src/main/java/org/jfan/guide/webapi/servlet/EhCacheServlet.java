@@ -4,12 +4,12 @@
 package org.jfan.guide.webapi.servlet;
 
 import org.jfan.an.cache.BaseCacheService;
-import org.jfan.an.cache.ehcache.EhCacheServiceImpl;
 import org.jfan.an.surfing.Surfing;
 import org.jfan.an.surfing.SurfingFactory;
 import org.jfan.an.surfing.SurfingSource;
 import org.jfan.guide.vo.LayoutVO;
 import org.jfan.guide.webapi.servlet.abs.AbstractServlet;
+import org.jfan.guide.webapi.servlet.abs.Resources;
 
 /**
  * <br>
@@ -26,7 +26,7 @@ public class EhCacheServlet extends AbstractServlet {
 	 */
 	@Override
 	public Surfing<LayoutVO> getSentence() {
-		BaseCacheService cacheService = new EhCacheServiceImpl();
+		BaseCacheService cacheService = Resources.getEhcache();
 		SurfingSource<LayoutVO> source = getSurfingSource("EhCache");
 		return SurfingFactory.newCachedLoadOnly(source, cacheService, 15);
 	}

@@ -25,6 +25,11 @@
 		<servlet-class>org.jfan.guide.webapi.servlet.MemcachedServlet</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>level2</servlet-name>
+		<servlet-class>org.jfan.guide.webapi.servlet.Level2Servlet</servlet-class>
+	</servlet>
+
 	<!-- mapping -->
 
 	<servlet-mapping>
@@ -45,5 +50,10 @@
 	<servlet-mapping>
 		<servlet-name>memcached</servlet-name>
 		<url-pattern>/memcached</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>level2</servlet-name>
+		<url-pattern>/level2</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -3,19 +3,13 @@
  */
 package org.jfan.guide.webapi.servlet;
 
-import java.io.IOException;
-
-import net.rubyeye.xmemcached.MemcachedClient;
-import net.rubyeye.xmemcached.MemcachedClientBuilder;
-import net.rubyeye.xmemcached.XMemcachedClientBuilder;
-import net.rubyeye.xmemcached.utils.AddrUtil;
-
 import org.jfan.an.cache.memcached.MemcachedServiceImpl;
 import org.jfan.an.surfing.Surfing;
 import org.jfan.an.surfing.SurfingFactory;
 import org.jfan.an.surfing.SurfingSource;
 import org.jfan.guide.vo.LayoutVO;
 import org.jfan.guide.webapi.servlet.abs.AbstractServlet;
+import org.jfan.guide.webapi.servlet.abs.Resources;
 
 /**
  * <br>
@@ -32,24 +26,9 @@ public class MemcachedServlet extends AbstractServlet {
 	 */
 	@Override
 	public Surfing<LayoutVO> getSentence() {
-		MemcachedClient mc;
-		try {
-			mc = mc();
-		} catch (IOException e) {
-			throw new RuntimeException("The Init MemcachedClient ERROR.");
-		}
-
-		MemcachedServiceImpl cacheService = new MemcachedServiceImpl();
-		cacheService.setMemcachedClient(mc);
-
+		MemcachedServiceImpl cacheService = Resources.getMemcached();
 		SurfingSource<LayoutVO> source = getSurfingSource("Memcached");
-
 		return SurfingFactory.newCachedLoadOnlyGroup(source, cacheService, 15);
-	}
-
-	private MemcachedClient mc() throws IOException {
-		MemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:11211"));
-		return builder.build();
 	}
 
 }
